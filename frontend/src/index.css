@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #eef2ff, #f8fafc);
+  color: #0f172a;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Inputs */
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+/* Subtle glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+}

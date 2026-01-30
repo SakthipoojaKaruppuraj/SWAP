@@ -1,0 +1,37 @@
+[
+    {
+      "inputs": [],
+      "name": "leoReserve",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "giaReserve",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "leoIn", "type": "uint256" },
+        { "indexed": false, "internalType": "uint256", "name": "giaOut", "type": "uint256" }
+      ],
+      "name": "LeoToGiaSwap",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
+        { "indexed": false, "internalType": "uint256", "name": "giaIn", "type": "uint256" },
+        { "indexed": false, "internalType": "uint256", "name": "leoOut", "type": "uint256" }
+      ],
+      "name": "GiaToLeoSwap",
+      "type": "event"
+    }
+  ]
+  

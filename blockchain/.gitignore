@@ -1,0 +1,24 @@
+# Foundry build artifacts
+out/
+cache/
+
+# Foundry broadcast data
+broadcast/*
+!/broadcast/**/run-latest.json
+/broadcast/**/dry-run/
+/broadcast/**/31337/
+
+# Forge debug files
+*.dbg.json
+
+# Environment variables
+.env
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Documentation output
+docs/
