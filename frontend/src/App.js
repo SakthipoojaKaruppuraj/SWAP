@@ -62,12 +62,12 @@ function App() {
     setGiaReserve(ethers.formatEther(await swap.giaReserve()));
   }
 
-  async function checkAllowance(value) {
+  async function checkAllowance(value, nextDirection = direction) {
     if (!value || !provider) return;
 
     const signer = await provider.getSigner();
     const token =
-      direction === "LEO_TO_GIA"
+      nextDirection === "LEO_TO_GIA"
         ? new ethers.Contract(LEO_ADDRESS, ERC20ABI, signer)
         : new ethers.Contract(GIA_ADDRESS, ERC20ABI, signer);
 
@@ -98,19 +98,19 @@ function App() {
     }
   }
 
-  function calculateExpectedOut(value) {
+  function calculateExpectedOut(value, nextDirection = direction) {
     if (!value || Number(value) <= 0) {
       setExpectedOut("0");
       return;
     }
 
     const reserveIn =
-      direction === "LEO_TO_GIA"
+      nextDirection === "LEO_TO_GIA"
         ? Number(leoReserve)
         : Number(giaReserve);
 
     const reserveOut =
-      direction === "LEO_TO_GIA"
+      nextDirection === "LEO_TO_GIA"
         ? Number(giaReserve)
         : Number(leoReserve);
 
@@ -145,7 +145,7 @@ function App() {
       const minOut = ethers.parseEther(
         (
           Number(expectedOut) *
-          (1 - (slippage + 0.5) / 100)
+          (1 - (Number(slippage) + 0.5) / 100)
         ).toString()
       );
 
@@ -241,9 +241,10 @@ function App() {
             <select
               value={direction}
               onChange={e => {
-                setDirection(e.target.value);
-                calculateExpectedOut(amount);
-                checkAllowance(amount);
+                const nextDirection = e.target.value;
+                setDirection(nextDirection);
+                calculateExpectedOut(amount, nextDirection);
+                checkAllowance(amount, nextDirection);
               }}
             >
               <option value="LEO_TO_GIA">LEO → GIA</option>
